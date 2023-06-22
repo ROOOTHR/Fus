@@ -1,0 +1,130 @@
+<nz-layout class="layout">
+  <nz-sider nzCollapsible nzBreakpoint="lg" [nzCollapsedWidth]="0">
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item>
+        <span nz-icon nzType="user"></span>
+        <span [routerLink]="['/myaccount']">User</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="form"></span>
+        <span [routerLink]="['/write-blogs']">Write Blogs</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="form"></span>
+        <span [routerLink]="['/myblogs']">My Blog</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="form"></span>
+        <span [routerLink]="['/mycomments']">My Comment</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="form"></span>
+        <span [routerLink]="['/dashboard']">Dashboard</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="user"></span>
+        <span [routerLink]="['/login']" (click)="clearLocalStorage()">Logout</span>
+      </li>
+    </ul>
+  </nz-sider>
+
+  <nz-layout>
+    <nz-content>
+      <div class="form-container">
+        <div class="inner-content">
+          <nz-descriptions nzTitle="User Info" nzBordered nzLayout="vertical" *ngFor="let user of data">
+            <nz-descriptions-item nzTitle="My ID">{{user.id}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="My Username">{{user.username}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="My Name">{{user.name}}</nz-descriptions-item>
+            <!--  <nz-descriptions-item nzTitle="Order Time">2018-04-24 18:00:00</nz-descriptions-item>-->
+            <!--  <nz-descriptions-item nzTitle="Usage Time" [nzSpan]="2">-->
+            <!--    2018-04-24 18:00:00 To 2019-04-24 18:00:00-->
+            <!--  </nz-descriptions-item>-->
+            <nz-descriptions-item nzTitle="About: {{user.about}}" [nzSpan]="3">
+              <button nz-button nzType="primary" (click)="open()">Modify</button>
+            </nz-descriptions-item>
+            <!--  <nz-descriptions-item nzTitle="Negotiated Amount">$80.00</nz-descriptions-item>-->
+            <!--  <nz-descriptions-item nzTitle="Discount">$20.00</nz-descriptions-item>-->
+            <!--  <nz-descriptions-item nzTitle="Official Receipts">$60.00</nz-descriptions-item>-->
+            <nz-descriptions-item nzTitle="{{blog.createtime}}" *ngFor="let blog of user.blogs" [nzSpan]="3">
+              <!--    {{ blog.title }}-->
+              <!--    <p>{{ blog.text }}</p>-->
+              <span nz-icon nzType="audit"></span><a [routerLink]="['/blog', blog.id]">{{ blog.title }}</a>
+              <!--    Created at: {{ blog.createtime }}-->
+            </nz-descriptions-item>
+            <!--  <a *ngFor="let blog of user.blogs">-->
+            <!--    {{ blog.title }}-->
+            <!--    &lt;!&ndash;    <p>{{ blog.text }}</p>&ndash;&gt;-->
+            <!--    Created at: {{ blog.createtime }}-->
+            <!--  </a>-->
+
+          </nz-descriptions>
+        </div>
+      </div>
+    </nz-content>
+    <!--<nz-footer><nz-pagination-->
+    <!--  [(nzPageIndex)]="currentPage"-->
+    <!--  [nzTotal]="data.length"-->
+    <!--  [nzPageSize]="pageSize"-->
+    <!--  (nzPageIndexChange)="onPageClick($event)"-->
+    <!--&gt;</nz-pagination></nz-footer>-->
+  </nz-layout>
+
+</nz-layout>
+<!--<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">-->
+<nz-drawer
+  [nzBodyStyle]="{ overflow: 'auto' }"
+  [nzMaskClosable]="false"
+  [nzWidth]="720"
+  [nzVisible]="visible"
+  nzTitle="Modify"
+  (nzOnClose)="close()"
+>
+  <!--  <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">-->
+  <form nz-form *nzDrawerContent>
+    <div nz-row [nzGutter]="8">
+      <div nz-col nzSpan="24">
+        <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+
+          <nz-form-item>
+            <nz-form-label>Name</nz-form-label>
+            <nz-form-control nzErrorTip="Please input your name!">
+              <!--            <input nz-input placeholder="change your name here" />-->
+              <input nz-input id="name" formControlName="name" placeholder="change your name here" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label>About</nz-form-label>
+            <nz-form-control nzErrorTip="Please input your about!">
+              <!--          <nz-form-control>-->
+              <textarea
+                nz-input
+                id="about"
+                formControlName="about"
+                placeholder="change your about here"
+                [nzAutosize]="{ minRows: 4, maxRows: 4 }"
+              ></textarea>
+            </nz-form-control>
+            <!--          </nz-form-control>-->
+          </nz-form-item>
+          <button nz-button [nzType]="'primary'" [disabled]="validateForm.invalid" (click)="refreshPage()">Modify</button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+
+  </form>
+
+  <!--  <ng-template #footerTpl>-->
+  <!--    <div style="float: right">-->
+  <!--      <button nz-button style="margin-right: 8px;" (click)="close()" >Cancel</button>-->
+  <!--      <button nz-button nzType="primary" (click)="close()" [nzType]="'primary'">Submit</button>-->
+  <!--    </div>-->
+  <!--  </ng-template>-->
+  <!--</form>-->
+</nz-drawer>
+<!--</form>-->

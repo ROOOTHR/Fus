@@ -1,0 +1,65 @@
+<nz-layout class="layout">
+  <nz-sider nzCollapsible nzBreakpoint="lg" [nzCollapsedWidth]="0">
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item>
+        <span nz-icon nzType="user"></span>
+        <span [routerLink]="['/myaccount']">User</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="form"></span>
+        <span [routerLink]="['/write-blogs']">Write Blogs</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="form"></span>
+        <span [routerLink]="['/myblogs']">My Blog</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="form"></span>
+        <span [routerLink]="['/mycomments']">My Comment</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="form"></span>
+        <span [routerLink]="['/dashboard']">Dashboard</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="user"></span>
+        <span [routerLink]="['/login']" (click)="clearLocalStorage()">Logout</span>
+      </li>
+    </ul>
+  </nz-sider>
+
+  <nz-layout>
+    <nz-content><div class="form-container">
+      <div class="inner-content">
+        <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+
+          <nz-form-item>
+            <!--          <nz-form-label>title</nz-form-label>-->
+            <nz-form-control nzErrorTip="Please input the title!">
+              <!--            <input nz-input placeholder="change your name here" />-->
+              <input nz-input id="title" formControlName="title" placeholder="write your title here" />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <!--          <nz-form-label>Text</nz-form-label>-->
+            <nz-form-control nzErrorTip="Please input the text!">
+              <!--          <nz-form-control>-->
+              <textarea
+                nz-input
+                id="text"
+                formControlName="text"
+                placeholder="write your text here"
+                [nzAutosize]="{ minRows: 4, maxRows: 4 }"
+              ></textarea>
+            </nz-form-control>
+            <!--          </nz-form-control>-->
+          </nz-form-item>
+          <button nz-button [nzType]="'primary'" [disabled]="validateForm.invalid">Submit</button>
+
+        </form>
+      </div>
+    </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

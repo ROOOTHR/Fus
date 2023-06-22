@@ -1,0 +1,132 @@
+<nz-layout class="layout">
+  <nz-sider nzCollapsible nzBreakpoint="lg" [nzCollapsedWidth]="0">
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item>
+        <span nz-icon nzType="user"></span>
+        <span [routerLink]="['/myaccount']">User</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="form"></span>
+        <span [routerLink]="['/write-blogs']">Write Blogs</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="form"></span>
+        <span [routerLink]="['/myblogs']">My Blog</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="form"></span>
+        <span [routerLink]="['/mycomments']">My Comment</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="form"></span>
+        <span [routerLink]="['/dashboard']">Dashboard</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="user"></span>
+        <span [routerLink]="['/login']" (click)="clearLocalStorage()">Logout</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="user"></span>
+        <span [routerLink]="['/login']" (click)="clearLocalStorage()">Logout</span>
+      </li>
+    </ul>
+  </nz-sider>
+
+  <nz-layout>
+    <nz-content>
+
+      <!--  <nz-card nzTitle="Blog Info" *ngFor="let blog of data">-->
+      <!--    <nz-descriptions  nzBordered nzLayout="vertical" *ngFor="let comment of data">-->
+      <ng-container>
+        <nz-card nzTitle="Blog Info" *ngFor="let blog of data">
+          <!--      <nz-descriptions-item nzTitle="ID">{{blog.id}}</nz-descriptions-item>-->
+          <nz-card nzType="inner" nzTitle="{{blog.title}}" >
+            {{ blog.text }}
+          </nz-card>
+        </nz-card>
+        <nz-card nzTitle="Comment Info" *ngFor="let blog of data">
+          <nz-card nzType="inner" nzTitle="{{comment.text}}" *ngFor="let comment of blog.comments">
+
+            <span nz-icon nzType="user"></span><a [routerLink]="['/user', comment.users[0].id]">{{ comment.users[0].username }}</a>
+          </nz-card>
+
+        </nz-card>
+        <button nz-button nzType="primary" (click)="open()">Comment</button>
+        <!--      <nz-descriptions-item nzTitle="About" >{{blog.user_id}}</nz-descriptions-item>-->
+      </ng-container>
+      <!--    </nz-descriptions>-->
+      <!--  </nz-card>-->
+      <!--  <div class="inner-content">-->
+      <!--    <div class="form-container">-->
+      <!--      <nz-list nzItemLayout="horizontal">-->
+      <!--        <nz-list-item *ngFor="let blog of data">-->
+      <!--          <nz-list-item-meta-title>-->
+      <!--            <a [routerLink]="['/blog', blog.id]">{{ blog.title }}</a>-->
+      <!--            <nz-list-item-meta-description>-->
+      <!--              <a routerLink="/user/{{blog.id}}">{{ blog.text }}</a>-->
+      <!--            </nz-list-item-meta-description>-->
+      <!--          </nz-list-item-meta-title>-->
+      <!--        </nz-list-item>-->
+      <!--        <nz-list-empty *ngIf="data.length === 0"></nz-list-empty>-->
+      <!--      </nz-list>-->
+      <!--    </div>-->
+      <!--  </div>-->
+    </nz-content>
+  </nz-layout>
+</nz-layout>
+
+<nz-drawer
+  [nzBodyStyle]="{ overflow: 'auto' }"
+  [nzMaskClosable]="false"
+  [nzWidth]="720"
+  [nzVisible]="visible"
+  nzTitle="Modify"
+  (nzOnClose)="close()"
+>
+  <!--  <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">-->
+  <form nz-form *nzDrawerContent>
+    <div nz-row [nzGutter]="8">
+      <div nz-col nzSpan="24">
+        <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+
+          <!--          <nz-form-item>-->
+          <!--            <nz-form-label>Name</nz-form-label>-->
+          <!--            <nz-form-control nzErrorTip="Please input your name!">-->
+          <!--              &lt;!&ndash;            <input nz-input placeholder="change your name here" />&ndash;&gt;-->
+          <!--              <input nz-input id="name" formControlName="name" placeholder="change your name here" />-->
+          <!--            </nz-form-control>-->
+          <!--          </nz-form-item>-->
+          <nz-form-item>
+            <nz-form-label>Submit</nz-form-label>
+            <nz-form-control nzErrorTip="Please input your comment!">
+              <!--          <nz-form-control>-->
+              <textarea
+                nz-input
+                id="comment"
+                formControlName="comment"
+                placeholder="share your comment here"
+                [nzAutosize]="{ minRows: 4, maxRows: 4 }"
+              ></textarea>
+            </nz-form-control>
+            <!--          </nz-form-control>-->
+          </nz-form-item>
+          <button nz-button [nzType]="'primary'" [disabled]="validateForm.invalid" (click)="refreshPage()">Submit</button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+
+  </form>
+
+  <!--  <ng-template #footerTpl>-->
+  <!--    <div style="float: right">-->
+  <!--      <button nz-button style="margin-right: 8px;" (click)="close()" >Cancel</button>-->
+  <!--      <button nz-button nzType="primary" (click)="close()" [nzType]="'primary'">Submit</button>-->
+  <!--    </div>-->
+  <!--  </ng-template>-->
+  <!--</form>-->
+</nz-drawer>

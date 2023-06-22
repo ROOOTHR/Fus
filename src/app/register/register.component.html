@@ -1,0 +1,54 @@
+<div class="form-container">
+  <div class="white-box">
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-label  nzRequired nzFor="username">Username</nz-form-label>
+        <nz-form-control  nzErrorTip="Please input your username!">
+          <input nz-input formControlName="username" id="username" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label  nzFor="password" nzRequired>Password</nz-form-label>
+        <nz-form-control  nzErrorTip="Please input your password!">
+          <input
+            nz-input
+            type="password"
+            id="password"
+            formControlName="password"
+            (ngModelChange)="updateConfirmValidator()"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzFor="checkPassword" nzRequired>Confirm Password</nz-form-label>
+        <nz-form-control  [nzErrorTip]="errorTpl">
+          <input nz-input type="password" formControlName="checkPassword" id="checkPassword" />
+          <ng-template #errorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">Please confirm your password!</ng-container>
+            <ng-container *ngIf="control.hasError('confirm')">
+              Two passwords that you enter is inconsistent!
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label
+
+          nzFor="name"
+          nzRequired
+          nzTooltipTitle="What do you want other to call you"
+        >
+          <span>Nickname</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your name!">
+          <input nz-input id="name" formControlName="name" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item nz-row class="register-area">
+        <nz-form-control >
+          <button nz-button nzType="primary" [disabled]="validateForm.invalid">Register</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+</div>

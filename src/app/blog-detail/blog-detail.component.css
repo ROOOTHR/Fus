@@ -1,0 +1,70 @@
+.form-container {
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  /*min-height: 100vh;*/
+  background-image: linear-gradient(to right top, rgba(255,255,255,0.3), rgba(255,255,255,0.7)); /*(可选)在表单外加上一个背景色*/
+}
+
+.layout {
+  min-height: 100vh;
+}
+
+.logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
+
+nz-header {
+  background: #fff;
+  padding: 0;
+}
+
+nz-content {
+  margin: 24px 16px 0;
+}
+
+.inner-content {
+  padding: 45px;
+  background-image: url('../../assets/images/disco-conquest-wallpaper-4k.png');; /*(可选)在表单外加上一个背景色*/
+  min-height: 600px;
+}
+
+nz-footer {
+  text-align: center;
+}
+/*!* 博客列表项样式 *!*/
+/*.blog-list-item {*/
+/*  padding: 16px;*/
+/*  background-color: #f0f0f0;*/
+/*  border-radius: 5px;*/
+/*  margin-bottom: 16px;*/
+/*}*/
+
+/*!* 博客标题样式 *!*/
+/*.blog-list-item-title {*/
+/*  font-size: 18px;*/
+/*  font-weight: bold;*/
+/*  color: #1890ff;*/
+/*}*/
+
+/*!* 博客时间样式 *!*/
+/*.blog-list-item-time {*/
+/*  color: #8c8c8c;*/
+/*  margin-top: 8px;*/
+/*}*/
+
+/*!* 博客内容样式 *!*/
+/*.blog-list-item-content {*/
+/*  margin-top: 8px;*/
+/*}*/
+nz-avatar {
+  margin-top: 16px;
+  margin-right: 16px;
+}
+.nz-card {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(255,255,255,0.5);
+}

@@ -1,0 +1,40 @@
+.layout {
+  min-height: 100vh;
+}
+
+.logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
+
+nz-header {
+  background: #fff;
+  padding: 0;
+}
+
+nz-content {
+  margin: 24px 16px 0;
+}
+
+.form-container {
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  /*min-height: 100vh;*/
+  background-image: linear-gradient(to right top, rgba(255,255,255,0.3), rgba(255,255,255,0.7)); /*(可选)在表单外加上一个背景色*/
+}
+.inner-content {
+  padding: 45px;
+  background-image: url('../../assets/images/disco-conquest-wallpaper-4k.png');; /*(可选)在表单外加上一个背景色*/
+  min-height: 600px;
+}
+.demo-infinite-container {
+  height: 300px;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+}
+
+nz-list {
+  padding: 24px;
+}

@@ -1,0 +1,71 @@
+<nz-layout class="layout">
+  <nz-sider nzCollapsible nzBreakpoint="lg" [nzCollapsedWidth]="0">
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item>
+        <span nz-icon nzType="user"></span>
+        <span [routerLink]="['/myaccount']">User</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="form"></span>
+        <span [routerLink]="['/write-blogs']">Write Blogs</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="form"></span>
+        <span [routerLink]="['/myblogs']">My Blog</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="form"></span>
+        <span [routerLink]="['/mycomments']">My Comment</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="form"></span>
+        <span [routerLink]="['/dashboard']">Dashboard</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="user"></span>
+        <span [routerLink]="['/login']" (click)="clearLocalStorage()">Logout</span>
+      </li>
+    </ul>
+  </nz-sider>
+
+  <nz-layout>
+    <nz-content>
+      <div class="inner-content">
+        <div class="form-container">
+          <!--<nz-descriptions nzTitle="User Info" nzBordered nzLayout="vertical" *ngFor="let user of data">-->
+          <!--  <nz-descriptions-item nzTitle="My ID">{{user.id}}</nz-descriptions-item>-->
+          <!--  <nz-descriptions-item nzTitle="My Username">{{user.username}}</nz-descriptions-item>-->
+          <!--  <nz-descriptions-item nzTitle="My Name">{{user.name}}</nz-descriptions-item>-->
+          <!--  <nz-descriptions-item nzTitle="About" [nzSpan]="3">{{user.about}}-->
+          <!--  </nz-descriptions-item>-->
+          <!--&lt;!&ndash;  <nz-descriptions-item nzTitle="{{blog.createtime}}" *ngFor="let blog of user.blogs" [nzSpan]="3">&ndash;&gt;-->
+          <!--&lt;!&ndash;    <span nz-icon nzType="audit"></span><a [routerLink]="['/blog', blog.id]">{{ blog.title }}</a>&ndash;&gt;-->
+          <!--&lt;!&ndash;  </nz-descriptions-item>&ndash;&gt;-->
+          <!--</nz-descriptions>-->
+          <nz-card nzTitle="User Info" *ngFor="let user of data">
+            <nz-descriptions  nzBordered nzLayout="vertical" *ngFor="let user of data">
+              <nz-descriptions-item nzTitle="ID">{{user.id}}</nz-descriptions-item>
+              <nz-descriptions-item nzTitle="Username">{{user.username}}</nz-descriptions-item>
+              <nz-descriptions-item nzTitle="Name">{{user.name}}</nz-descriptions-item>
+              <nz-descriptions-item nzTitle="About" >{{user.about}}</nz-descriptions-item>
+            </nz-descriptions>
+            <!--      </nz-card>-->
+            <!--      <nz-card *ngFor="let user of data" >-->
+            <!--        <p style="font-size:14px;color:rgba(0, 0, 0, 0.85);margin-bottom:16px;font-weight: 500;">Group title</p>-->
+            <nz-card nzType="inner" nzTitle="{{blog.title}}"  *ngFor="let blog of user.blogs">
+              <a [routerLink]="['/blog', blog.id]">{{ blog.text }}</a>
+            </nz-card>
+            <!--        <nz-card nzType="inner" style="margin-top:16px;" nzTitle="Inner Card Title" [nzExtra]="extraTemplate">-->
+            <!--          <a>Inner Card Content</a>-->
+            <!--        </nz-card>-->
+          </nz-card>
+          <!--      <ng-template #extraTemplate>-->
+          <!--        <a>More</a>-->
+          <!--      </ng-template>-->
+        </div>
+      </div>
+    </nz-content>
+  </nz-layout>
+
+</nz-layout>

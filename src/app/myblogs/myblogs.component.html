@@ -1,0 +1,43 @@
+<nz-layout class="layout">
+  <nz-sider nzCollapsible nzBreakpoint="lg" [nzCollapsedWidth]="0">
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item>
+        <span nz-icon nzType="user"></span>
+        <span [routerLink]="['/myaccount']">User</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="form"></span>
+        <span [routerLink]="['/write-blogs']">Write Blogs</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="form"></span>
+        <span [routerLink]="['/myblogs']">My Blog</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="form"></span>
+        <span [routerLink]="['/mycomments']">My Comment</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="form"></span>
+        <span [routerLink]="['/dashboard']">Dashboard</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="user"></span>
+        <span [routerLink]="['/login']" (click)="clearLocalStorage()">Logout</span>
+      </li>
+    </ul>
+  </nz-sider>
+
+  <nz-layout>
+    <nz-content>
+      <nz-descriptions nzTitle="User Info" nzBordered nzLayout="vertical" *ngFor="let blog of data">
+
+        <nz-descriptions-item>{{blog.title}}</nz-descriptions-item>
+        <!--        <nz-descriptions-item>{{blog.id}}</nz-descriptions-item>-->
+        <nz-descriptions-item><button nz-button nzType="primary" (click)="deleteBlog(blog.id)">Delete</button></nz-descriptions-item>
+        <nz-descriptions-item><button nz-button [nzType]="'primary'" [routerLink]="['/editblogs', blog.id]">Submit</button></nz-descriptions-item>
+      </nz-descriptions>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

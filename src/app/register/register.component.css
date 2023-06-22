@@ -1,0 +1,23 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('../../assets/images/disco-conquest-wallpaper-4k.png');; /*(可选)在表单外加上一个背景色*/
+}
+
+.white-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600px; /*(可根据需要调整)*/
+  height: 400px; /*(可根据需要调整)*/
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+nz-form-label {
+  max-width: 400px; /*调整它的宽度*/
+}

@@ -26,7 +26,7 @@ interface User {
 })
 export class DashboardComponent implements OnInit{
   currentPage = 1; // 当前页码
-  pageSize = 7; // 每页显示的博客数
+  pageSize = 5; // 每页显示的博客数
   data: any[] = [];
 
 

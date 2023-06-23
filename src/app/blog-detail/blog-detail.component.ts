@@ -15,6 +15,8 @@ export class BlogDetailComponent implements OnInit {
   data: any[] = [];
   visible = false;
   validateForm!: UntypedFormGroup;
+  currentPage = 1; // 当前页码
+  pageSize = 3; // 每页显示数
   private myId!: number
 
   open(): void {
@@ -84,6 +86,7 @@ export class BlogDetailComponent implements OnInit {
       (data) => {
         // 将返回的数据保存到组件属性中
         this.data = data;
+
         console.log(this.blogId)
         console.log(data)
       },

@@ -13,6 +13,8 @@ export class MyblogsComponent implements OnInit{
   private myId!: number
   data: any[] = [];
   validateForm!: UntypedFormGroup;
+  currentPage = 1; // 当前页码
+  pageSize = 3; // 每页显示数
   constructor(private userService: UserService, private router: Router, private http: HttpClient, private fb: UntypedFormBuilder) {
   }
   clearLocalStorage() {
@@ -30,12 +32,13 @@ export class MyblogsComponent implements OnInit{
     )
   }
   deleteBlog(blogId: number): void {
-    if (!confirm('确定要删除该博客吗？')) return; // 确认是否删除该评论
+    if (!confirm('确定要删除该博客吗？')) return; // 确认是否删除
     console.log(blogId)
     const url = `http://localhost:5000/api/deleteblog/${blogId}`;
     this.http.delete(url).subscribe((result: any) => {
       if (result.success) {
         console.log('Delete successfully:', result.message);
+        location.reload();
       } else {
         alert('Failed to delete blog');
         console.log('Failed to delete blog:', result.message);
@@ -50,5 +53,17 @@ export class MyblogsComponent implements OnInit{
     this.myId = this.userService.getMyId();
     console.log(this.myId);
     this.getBlogs()
+  }
+  getCurrentPageBlogs() {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+
+    return this.data.slice(startIndex, endIndex);
+  }
+
+
+  // 处理页码点击事件
+  onPageClick(pageNumber: number) {
+    this.currentPage = pageNumber;
   }
 }

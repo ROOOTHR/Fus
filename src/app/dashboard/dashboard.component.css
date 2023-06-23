@@ -1,9 +1,7 @@
 .form-container {
-  /*display: flex;*/
-  /*justify-content: center;*/
-  /*align-items: center;*/
-  /*min-height: 100vh;*/
   background: linear-gradient(to right top, rgba(255,255,255,0.3), rgba(255,255,255,0.7)); /*(可选)在表单外加上一个背景色*/
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 30px;
 }
 
 .layout {

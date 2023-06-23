@@ -40,7 +40,7 @@
 <!--        <nz-descriptions-item><button nz-button nzType="primary" (click)="deleteComment(comment.id)">Delete</button></nz-descriptions-item>-->
 <!--      </nz-descriptions>-->
 <!--        <nz-card *ngFor="let comment of data" style="width: 100%;">-->
-          <nz-card nzTitle="{{comment.text}}"  *ngFor="let comment of data" style="width: 100%;">
+          <nz-card nzTitle="{{comment.text}}"  *ngFor="let comment of getCurrentPageBlogs()" style="width: 100%;">
             <button nz-button nzType="primary" [routerLink]="['/blog', comment.blog_id]">Blog</button>
             <nz-divider nzType="vertical"></nz-divider>
             <button nz-button nzType="primary" (click)="deleteComment(comment.id)">Delete</button>
@@ -53,6 +53,12 @@
 
       <!--    </form>-->
     </nz-content>
+    <nz-footer><nz-pagination
+      [(nzPageIndex)]="currentPage"
+      [nzTotal]="data.length"
+      [nzPageSize]="pageSize"
+      (nzPageIndexChange)="onPageClick($event)"
+    ></nz-pagination></nz-footer>
   </nz-layout>
 </nz-layout>
 

@@ -13,6 +13,8 @@ export class MycommentsComponent implements OnInit{
   private myId!: number
   data: any[] = [];
   validateForm!: UntypedFormGroup;
+  currentPage = 1; // 当前页码
+  pageSize = 3; // 每页显示数
   constructor(private userService: UserService, private route: Router, private http: HttpClient, private fb: UntypedFormBuilder,) {
   }
   clearLocalStorage() {
@@ -25,11 +27,15 @@ export class MycommentsComponent implements OnInit{
     this.http.delete(url).subscribe((result: any) => {
       if (result.success) {
         console.log('Delete successfully:', result.message);
+        location.reload();
       } else {
         alert('Failed to delete comment');
         console.log('Failed to delete comment:', result.message);
       }
     });
+  }
+  refreshPage(): void {
+    location.reload();
   }
   getComments() {
     this.http.get<any>( `http://localhost:5000/api/mycomments/${this.myId}`).subscribe(
@@ -48,5 +54,17 @@ export class MycommentsComponent implements OnInit{
     this.myId = this.userService.getMyId();
     console.log(this.myId);
     this.getComments()
+  }
+  getCurrentPageBlogs() {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+
+    return this.data.slice(startIndex, endIndex);
+  }
+
+
+  // 处理页码点击事件
+  onPageClick(pageNumber: number) {
+    this.currentPage = pageNumber;
   }
 }

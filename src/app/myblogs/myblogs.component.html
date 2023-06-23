@@ -38,7 +38,7 @@
 <!--        <nz-descriptions-item><button nz-button nzType="primary" (click)="deleteBlog(blog.id)">Delete</button></nz-descriptions-item>-->
 <!--        <nz-descriptions-item><button nz-button [nzType]="'primary'" [routerLink]="['/editblogs', blog.id]">Submit</button></nz-descriptions-item>-->
 <!--      </nz-descriptions>-->
-      <nz-card nzTitle="{{blog.title}}"  *ngFor="let blog of data" style="width: 100%;">
+      <nz-card nzTitle="{{blog.title}}"  *ngFor="let blog of getCurrentPageBlogs()" style="width: 100%;">
         <button nz-button [nzType]="'primary'" [routerLink]="['/editblogs', blog.id]">Edit</button>
         <nz-divider nzType="vertical"></nz-divider>
         <button nz-button nzType="primary" (click)="deleteBlog(blog.id)">Delete</button>
@@ -47,5 +47,11 @@
       </nz-card>
     </div>
     </nz-content>
+    <nz-footer><nz-pagination
+      [(nzPageIndex)]="currentPage"
+      [nzTotal]="data.length"
+      [nzPageSize]="pageSize"
+      (nzPageIndexChange)="onPageClick($event)"
+    ></nz-pagination></nz-footer>
   </nz-layout>
 </nz-layout>

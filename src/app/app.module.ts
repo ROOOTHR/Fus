@@ -38,8 +38,10 @@ import {NzAvatarModule} from "ng-zorro-antd/avatar";
 import {NzCardModule} from "ng-zorro-antd/card";
 import { WriteBlogsComponent } from './write-blogs/write-blogs.component';
 import { EditBlogsComponent } from './edit-blogs/edit-blogs.component';
+import {NzDividerModule} from "ng-zorro-antd/divider";
 
 registerLocaleData(zh);
+
 
 @NgModule({
   declarations: [
@@ -79,7 +81,8 @@ registerLocaleData(zh);
     NzDrawerModule,
     NzDatePickerModule,
     NzAvatarModule,
-    NzCardModule
+    NzCardModule,
+    NzDividerModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: zh_CN }

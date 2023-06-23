@@ -31,13 +31,26 @@
 
   <nz-layout>
     <nz-content>
-      <!--      <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">-->
-      <nz-descriptions nzTitle="User Info" nzBordered nzLayout="vertical" *ngFor="let comment of data">
+      <div class="inner-content">
 
-        <nz-descriptions-item>{{comment.text}}</nz-descriptions-item>
-        <nz-descriptions-item>{{comment.id}}</nz-descriptions-item>
-        <nz-descriptions-item><button nz-button nzType="primary" (click)="deleteComment(comment.id)">Delete</button></nz-descriptions-item>
-      </nz-descriptions>
+      <!--      <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">-->
+<!--      <nz-descriptions nzTitle="User Info" nzBordered nzLayout="vertical" *ngFor="let comment of data">-->
+
+<!--        <nz-descriptions-item>{{comment.text}}</nz-descriptions-item>-->
+<!--        <nz-descriptions-item><button nz-button nzType="primary" (click)="deleteComment(comment.id)">Delete</button></nz-descriptions-item>-->
+<!--      </nz-descriptions>-->
+<!--        <nz-card *ngFor="let comment of data" style="width: 100%;">-->
+          <nz-card nzTitle="{{comment.text}}"  *ngFor="let comment of data" style="width: 100%;">
+            <button nz-button nzType="primary" [routerLink]="['/blog', comment.blog_id]">Blog</button>
+            <nz-divider nzType="vertical"></nz-divider>
+            <button nz-button nzType="primary" (click)="deleteComment(comment.id)">Delete</button>
+          </nz-card>
+<!--        </nz-card>-->
+<!--        <ng-template #extraTemplate>-->
+<!--          <button nz-button nzType="primary" (click)="deleteComment(comment.id)">Delete</button>-->
+<!--        </ng-template>-->
+      </div>
+
       <!--    </form>-->
     </nz-content>
   </nz-layout>

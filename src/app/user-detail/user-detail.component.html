@@ -53,8 +53,13 @@
             <!--      </nz-card>-->
             <!--      <nz-card *ngFor="let user of data" >-->
             <!--        <p style="font-size:14px;color:rgba(0, 0, 0, 0.85);margin-bottom:16px;font-weight: 500;">Group title</p>-->
-            <nz-card nzType="inner" nzTitle="{{blog.title}}"  *ngFor="let blog of user.blogs">
-              <a [routerLink]="['/blog', blog.id]">{{ blog.text }}</a>
+<!--            <nz-card nzType="inner" nzTitle="{{blog.title}}"  *ngFor="let blog of user.blogs">-->
+<!--              <a [routerLink]="['/blog', blog.id]">{{ blog.text }}</a>-->
+<!--            </nz-card>-->
+            <nz-card style="width: 100%;" *ngFor="let blog of user.blogs">
+              <a [routerLink]="['/blog', blog.id]">{{blog.title}}</a>
+              <nz-divider></nz-divider>
+              <p>{{blog.text}}</p>
             </nz-card>
             <!--        <nz-card nzType="inner" style="margin-top:16px;" nzTitle="Inner Card Title" [nzExtra]="extraTemplate">-->
             <!--          <a>Inner Card Content</a>-->

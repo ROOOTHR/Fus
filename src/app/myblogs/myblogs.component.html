@@ -30,14 +30,22 @@
   </nz-sider>
 
   <nz-layout>
-    <nz-content>
-      <nz-descriptions nzTitle="User Info" nzBordered nzLayout="vertical" *ngFor="let blog of data">
+    <nz-content><div class="inner-content">
+<!--      <nz-descriptions nzTitle="User Info" nzBordered nzLayout="vertical" *ngFor="let blog of data">-->
 
-        <nz-descriptions-item>{{blog.title}}</nz-descriptions-item>
-        <!--        <nz-descriptions-item>{{blog.id}}</nz-descriptions-item>-->
-        <nz-descriptions-item><button nz-button nzType="primary" (click)="deleteBlog(blog.id)">Delete</button></nz-descriptions-item>
-        <nz-descriptions-item><button nz-button [nzType]="'primary'" [routerLink]="['/editblogs', blog.id]">Submit</button></nz-descriptions-item>
-      </nz-descriptions>
+<!--        <nz-descriptions-item>{{blog.title}}</nz-descriptions-item>-->
+<!--        &lt;!&ndash;        <nz-descriptions-item>{{blog.id}}</nz-descriptions-item>&ndash;&gt;-->
+<!--        <nz-descriptions-item><button nz-button nzType="primary" (click)="deleteBlog(blog.id)">Delete</button></nz-descriptions-item>-->
+<!--        <nz-descriptions-item><button nz-button [nzType]="'primary'" [routerLink]="['/editblogs', blog.id]">Submit</button></nz-descriptions-item>-->
+<!--      </nz-descriptions>-->
+      <nz-card nzTitle="{{blog.title}}"  *ngFor="let blog of data" style="width: 100%;">
+        <button nz-button [nzType]="'primary'" [routerLink]="['/editblogs', blog.id]">Edit</button>
+        <nz-divider nzType="vertical"></nz-divider>
+        <button nz-button nzType="primary" (click)="deleteBlog(blog.id)">Delete</button>
+        <nz-divider nzType="vertical"></nz-divider>
+        <button nz-button [nzType]="'primary'" [routerLink]="['/blog', blog.id]">Blog</button>
+      </nz-card>
+    </div>
     </nz-content>
   </nz-layout>
 </nz-layout>

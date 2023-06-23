@@ -26,10 +26,6 @@
         <span nz-icon nzType="user"></span>
         <span [routerLink]="['/login']" (click)="clearLocalStorage()">Logout</span>
       </li>
-      <li nz-menu-item>
-        <span nz-icon nzType="user"></span>
-        <span [routerLink]="['/login']" (click)="clearLocalStorage()">Logout</span>
-      </li>
     </ul>
   </nz-sider>
 
@@ -38,13 +34,21 @@
 
       <!--  <nz-card nzTitle="Blog Info" *ngFor="let blog of data">-->
       <!--    <nz-descriptions  nzBordered nzLayout="vertical" *ngFor="let comment of data">-->
+      <div class="inner-content">
       <ng-container>
-        <nz-card nzTitle="Blog Info" *ngFor="let blog of data">
-          <!--      <nz-descriptions-item nzTitle="ID">{{blog.id}}</nz-descriptions-item>-->
-          <nz-card nzType="inner" nzTitle="{{blog.title}}" >
-            {{ blog.text }}
+
+<!--        <nz-card nzTitle="Blog Info" *ngFor="let blog of data">-->
+<!--          &lt;!&ndash;      <nz-descriptions-item nzTitle="ID">{{blog.id}}</nz-descriptions-item>&ndash;&gt;-->
+<!--          <nz-card nzType="inner" nzTitle="{{blog.title}}" >-->
+<!--            {{ blog.text }}-->
+<!--          </nz-card>-->
+          <nz-card style="width: 100%;" *ngFor="let blog of data">
+            <h2>{{blog.title}}</h2>
+              <nz-divider></nz-divider>
+            <p>{{blog.text}}</p>
           </nz-card>
-        </nz-card>
+
+<!--        </nz-card>-->
         <nz-card nzTitle="Comment Info" *ngFor="let blog of data">
           <nz-card nzType="inner" nzTitle="{{comment.text}}" *ngFor="let comment of blog.comments">
 
@@ -71,7 +75,7 @@
       <!--        <nz-list-empty *ngIf="data.length === 0"></nz-list-empty>-->
       <!--      </nz-list>-->
       <!--    </div>-->
-      <!--  </div>-->
+        </div>
     </nz-content>
   </nz-layout>
 </nz-layout>

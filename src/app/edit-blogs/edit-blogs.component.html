@@ -33,8 +33,9 @@
     <nz-content><div class="form-container">
       <div class="inner-content">
         <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
-
+          <nz-card style="width:100%;">
           <nz-form-item>
+
             <!--          <nz-form-label>title</nz-form-label>-->
             <nz-form-control nzErrorTip="Please input the title!">
               <!--            <input nz-input placeholder="change your name here" />-->
@@ -56,7 +57,7 @@
             <!--          </nz-form-control>-->
           </nz-form-item>
           <button nz-button [nzType]="'primary'" [disabled]="validateForm.invalid">Submit</button>
-
+          </nz-card>
         </form>
       </div>
     </div>

@@ -18,10 +18,11 @@ nz-content {
 }
 
 .inner-content {
-  padding: 24px;
-  background: #fff;
+  padding: 45px;
+  background-image: url('../../assets/images/disco-conquest-wallpaper-4k.png');; /*(可选)在表单外加上一个背景色*/
   min-height: 600px;
 }
+
 .demo-infinite-container {
   height: 300px;
   border: 1px solid #e8e8e8;
@@ -30,4 +31,9 @@ nz-content {
 
 nz-list {
   padding: 24px;
+}
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
